@@ -6,3 +6,4 @@ this is a mini project for practice of docker and docker compose by an authentic
 - express.js
 - mongoDB
 - Redis
+- Nginx
