@@ -9,6 +9,7 @@ const {
     REDIS_PORT,
     SESSION_SECRED
 } = require('./config/config')
+const cors = require('cors')
 const postRouter = require('./routers/postRouters')
 const userRouter = require('./routers/userRouters')
 const session = require('express-session')
@@ -31,6 +32,8 @@ mongoose.connect( mongoURL )
     .catch( e => console.log('our error is :' ,e))
 
 
+app.enable('trust proxy')
+app.use(cors())
 app.use(session({
     store: new RedisStore({ client: redisClient }),
     secret: SESSION_SECRED,
@@ -45,7 +48,7 @@ app.use(session({
 
 app.use(express.json());
 
-app.get('/', (req, res) => {
+app.get('/api/v1', (req, res) => {
     res.send('<h2>Hi Behnam</h2>')
 })
 
