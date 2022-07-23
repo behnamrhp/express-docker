@@ -49,11 +49,11 @@ app.use(session({
 app.use(express.json());
 
 app.get('/api/v1', (req, res) => {
-    res.send('<h2>Hi Behnam</h2>')
+    res.send('<h2>Hi Behnam!!!!updated</h2>')
 })
 
 app.use( '/api/v1/posts', postRouter )
 app.use( '/api/v1/users', userRouter )
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || "3000";
 
 app.listen( port , () => console.log(`listening on port ${port}`))

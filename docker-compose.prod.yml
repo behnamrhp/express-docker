@@ -2,8 +2,15 @@ version: '3'
 services:
   nginx:
     ports:
-      - 80:80
+      - 2000:80
   node-app:
+    deploy:
+      replicas: 8
+      restart_policy:
+        condition: any
+      update_config:
+        parallelism: 2
+        delay: 10s
     build: 
       context: .
       args:
